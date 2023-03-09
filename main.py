@@ -25,5 +25,5 @@ from unittest import main
 # Run unit tests automatically
 #main(module='test_module', exit=False)*/
 
-ports = port_scanner.get_open_ports("192.168.1.4", [100,500])
+ports = port_scanner.get_open_ports("127.0.0.1", [100,500])
 print(ports)
