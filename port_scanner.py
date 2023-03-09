@@ -11,7 +11,7 @@ def get_open_ports(target, port_range,verbose=True):
         text='the  open ports for {'+target+'}are:\nPort\tService\n'
         for port in open_ports :
             text=text+str(port)+'\t'+str(ports_and_services.get(port))+'\n'
-    return text
+        return text
     else:
         return open_ports
 
