@@ -5,7 +5,7 @@ import re
 
 def portScanner(ip_addr,port_range):
     open_ports=[]
-    for port in range(port_range[0],port_range[1]):
+    for port in range(port_range[0],port_range[1]+1):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)
         result = s.connect_ex((ip_addr,port))
