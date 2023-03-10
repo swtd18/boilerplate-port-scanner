@@ -1,7 +1,7 @@
 # This entrypoint file to be used in development. Start by reading README.md
 import port_scanner
 from unittest import main
-
+"""
 # Called with URL
 ports = port_scanner.get_open_ports("www.freecodecamp.org", [75,85])
 print("Open ports:", ports)
@@ -21,7 +21,8 @@ print(ports + '\n')
 # Verbose called with host name -- multiple ports returned
 ports = port_scanner.get_open_ports("scanme.nmap.org", [20, 80], True)
 print(ports + '\n')
-
+"""
 # Run unit tests automatically
 main(module='test_module', exit=False)
+
 
