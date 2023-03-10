@@ -5,7 +5,7 @@ import re
 
 def portScanner(ip_addr,port_range):
     open_ports=[]
-    for port in range(port_range[0],port_range[1]+1):
+    for port in range(port_range[0],port_range[1]):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)
         result = s.connect_ex((ip_addr,port))
@@ -46,25 +46,20 @@ def get_open_ports(target, port_range,verbose=False):
         else:
             return("Error: Invalid hostname")
     except herror:
-        try:
-            open_ports=portScanner(ip_addr,port_range)     
-            if(verbose):
-                text='Open ports for '+target+'\nPORT     SERVICE\n'
-                k=0
-                for port in open_ports :
-                    service=str(ports_and_services.get(port))
-                    port=str(port)
-                    space=9-len(port)+len(service)
-                    k+=1
-                    if(k<len(open_ports)):
-                        text=text+port + service.rjust(space," ")+'\n'
-                    else:
-                        text=text+port + service.rjust(space," ")
+        open_ports=portScanner(ip_addr,port_range)     
+        if(verbose):
+            text='Open ports for '+target+'\nPORT     SERVICE\n'
+            k=0
+            for port in open_ports :
+                service=str(ports_and_services.get(port))
+                port=str(port)
+                space=9-len(port)+len(service)
+                k+=1
+                if(k<len(open_ports)):
+                    text=text+port + service.rjust(space," ")+'\n'
+                else:
+                    text=text+port + service.rjust(space," ")
                 return text
             else :
-                open_ports=[]  
-        except Exception as err:
-            return(f"Unexpected {err=}")
-    except Exception as err:
-        return(f"Unexpected {err=}")
-   
+                return open_ports 
+  
